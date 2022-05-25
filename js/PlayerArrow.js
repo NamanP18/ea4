@@ -11,7 +11,7 @@ class PlayerArrow {
     this.body = Bodies.rectangle(x, y, this.width, this.height, options);
     this.image = loadImage("./assets/arrow.png");
     //write a code for defining an array named trajectory
-   
+
     this.trajectory = [];
       World.add(world, this.body);
     
@@ -33,17 +33,22 @@ class PlayerArrow {
       image(this.image, 0, 0, this.width, this.height);
       pop();
 
-      if (this.body.velocity.x > 0 && this.body.position.x > 400) {
-        var position = [this.body.position.x, this.body.position.y];
+ 
         /****write a correct 
          code to add the current 
          position of arrow to 
         the trajectory array**/
-        for (var i = 0; i < this.trajectory.length; i++) {
-          fill("white");
-          ellipse(this.trajectory[i][0], this.trajectory[i][1], 5, 5);
-        }
-      }
+        
+    if (this.body.velocity.x > 0 && this.body.position.x > 400) {
+      var position = [this.body.position.x, this.body.position.y];
+      this.trajectory.push(position);
+    }
+
+    for (var i = 0; i < this.trajectory.length; i++) {
+      fill("white");
+      ellipse(this.trajectory[i][0], this.trajectory[i][1], 5, 5);
+    }
+      
   
 
       /****write a correct code to add for loop and to display small dots
